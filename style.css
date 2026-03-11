@@ -10,7 +10,7 @@ body {
     background-color: #000000;
     color: #ffffff;
     font-family: 'Segoe UI', sans-serif;
-    overflow-x: hidden; /* Evita rolagem lateral indesejada */
+    overflow-x: hidden;
 }
 
 /* BARRA DE PROGRESSO */
@@ -194,6 +194,52 @@ section {
     display: block;
 }
 
+.skill-item span {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* CONTATO E REDES SOCIAIS */
+#contato {
+    text-align: center;
+    background-color: #050505;
+}
+
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.icone-link {
+    font-size: 3rem;
+    color: #a855f7;
+    transition: 0.4s;
+}
+
+.icone-link:hover {
+    color: #facc15;
+    transform: translateY(-10px) scale(1.1);
+}
+
+/* RODAPÉ / COPYRIGHT */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #000;
+    border-top: 1px solid #1a1a1a;
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+footer span {
+    color: #facc15;
+}
+
 /* BOTÃO VOLTAR AO TOPO */
 #btnTopo {
     display: none;
@@ -217,7 +263,6 @@ section {
    =========================================== */
 
 @media (max-width: 768px) {
-    /* Menu Mobile */
     nav {
         flex-direction: column;
         padding: 20px 5%;
@@ -231,49 +276,42 @@ section {
         justify-content: center;
     }
 
-    /* Hero Section (Ajuste principal do "achatado") */
     .hero-content h1 {
-        font-size: 2.2rem; /* Título menor para caber na tela */
+        font-size: 2.2rem;
     }
 
-    .hero-content p {
-        font-size: 1.1rem;
-    }
-
-    /* Seções e Espaçamentos */
     section {
-        padding: 60px 5%; /* Menos recuo nas laterais */
+        padding: 60px 5%;
     }
 
-    .titulo-sessao {
-        font-size: 1.8rem;
-        margin-bottom: 30px;
-    }
-
-    /* Sobre Mim */
     .conteudo-sobre {
         padding: 25px;
         font-size: 1rem;
         border-right: none;
-        border-bottom: 4px solid #facc15; /* Detalhe amarelo vai para baixo */
+        border-bottom: 4px solid #facc15;
     }
 
-    /* Ajuste de Skills para não ficar gigante */
     .grid-skills {
         grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
         gap: 10px;
     }
 
-    .skill-item {
-        padding: 15px;
+    .redes-sociais {
+        gap: 25px;
     }
 
-    .skill-item i {
-        font-size: 2rem;
+    .icone-link {
+        font-size: 2.2rem; /* Ícones menores no mobile para não achatar */
     }
 }
 
-/* ANIMAÇÃO PISCAR */
+/* ANIMAÇÕES */
+#texto-maquina::after {
+    content: '|';
+    color: #a855f7;
+    animation: piscar 0.7s infinite;
+}
+
 @keyframes piscar {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
