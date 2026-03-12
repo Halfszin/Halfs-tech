@@ -423,7 +423,7 @@ footer span {
 /* ============================================================
    REGRAS PARA DISPOSITIVOS MÓVEIS (Telas menores que 768px)
    ============================================================ */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     
     /* Esconde o sumário flutuante lateral no mobile */
     .sumario-flutuante {
