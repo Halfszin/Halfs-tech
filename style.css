@@ -1,4 +1,6 @@
-/* RESET E CONFIGURAÇÕES GERAIS */
+/* ============================================================
+   1. RESET E CONFIGURAÇÕES GERAIS
+   ============================================================ */
 * {
     margin: 0;
     padding: 0;
@@ -9,11 +11,16 @@
 body {
     background-color: #000000;
     color: #ffffff;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* BARRA DE PROGRESSO */
+/* ============================================================
+   2. ELEMENTOS GLOBAIS DE INTERAÇÃO
+   ============================================================ */
+
+/* Barra de progresso no topo da página */
 #progress-bar {
     position: fixed;
     top: 0;
@@ -24,78 +31,102 @@ body {
     z-index: 9999;
 }
 
-/* NAVEGAÇÃO */
-nav {
+/* Scrollbar personalizada para o navegador */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-color, #facc15);
+    border-radius: 10px;
+}
+
+/* Botão Flutuante Voltar ao Topo */
+#btnTopo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #a855f7;
+    color: #000000;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; /* Controlado via JavaScript */
+    z-index: 1000;
+    transition: 0.3s ease;
+}
+
+/* ============================================================
+   3. NAVEGAÇÃO E LOGO
+   ============================================================ */
+
+/* Menu superior principal */
+nav:not(.sumario-flutuante) {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 8%;
-    background: transparent; 
+    justify-content: center;
+    padding: 40px 0;
     position: absolute;
     width: 100%;
     top: 0;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: 900;
     color: #facc15;
-    letter-spacing: 1px;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .logo span {
     color: #a855f7;
-    margin-left: 2px;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
+/* ============================================================
+   4. HEADER (HERO SECTION)
+   ============================================================ */
 
-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: 0.3s;
-    position: relative;
-}
-
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #facc15;
-    transition: 0.3s;
-}
-
-nav ul li a:hover { color: #a855f7; }
-nav ul li a:hover::after { width: 100%; }
-
-/* HEADER / HERO */
 header {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 5%;
-    background: linear-gradient(to bottom, #000000 0%, #1e0b36 100%);
+    /* Gradiente radial cria o efeito de profundidade no centro */
+    background: radial-gradient(circle at center, #1e0b36 0%, #000000 100%);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
 }
 
 .hero-content h1 {
     font-size: 4rem;
     color: #facc15;
     margin-bottom: 10px;
-    line-height: 1.1;
+    text-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
+    min-height: 1.2em;
+}
+
+/* Efeito Typewriter e Cursor */
+#texto-maquina::after {
+    content: '|';
+    color: #a855f7;
+    margin-left: 5px;
+    animation: piscar 0.7s infinite;
+}
+
+@keyframes piscar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .hero-content p {
@@ -104,25 +135,28 @@ header {
     margin-bottom: 30px;
 }
 
-/* BOTÕES */
+/* Botão de Chamada para Ação (CTA) */
 .btn-principal {
-    padding: 12px 25px;
-    background: #facc15;
-    color: black;
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #facc15;
+    color: #000000;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-principal:hover {
-    background: #a855f7;
-    color: white;
-    box-shadow: 0 0 15px #a855f7;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(250, 204, 21, 0.5);
 }
 
-/* SEÇÕES GERAIS */
+/* ============================================================
+   5. SEÇÃO SOBRE E MÉTRICAS
+   ============================================================ */
+
 section {
     padding: 100px 8%;
 }
@@ -130,27 +164,59 @@ section {
 .titulo-sessao {
     text-align: center;
     color: #facc15;
-    margin-bottom: 50px;
     font-size: 2.5rem;
+    margin-bottom: 50px;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-/* SOBRE MIM */
 .conteudo-sobre {
-    background: linear-gradient(90deg, #1e0b36 0%, #000000 100%);
-    padding: 40px;
-    border-radius: 20px;
-    border-right: 4px solid #facc15;
-    font-size: 1.1rem;
-    color: #cbd5e1;
     max-width: 900px;
     margin: 0 auto;
-    line-height: 1.6;
+    padding: 40px;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border-left: 4px solid #facc15;
+    color: #cbd5e1;
+    line-height: 1.8;
 }
 
-.conteudo-sobre strong { color: #facc15; }
+.conteudo-sobre strong {
+    color: #facc15;
+}
 
-/* GRID DE PROJETOS */
+/* Grid de Métricas de Performance */
+.status-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    border: 1px solid rgba(168, 85, 247, 0.1);
+    text-align: center;
+}
+
+.metric-item-status .metric-icon {
+    font-size: 1.5rem;
+    color: #a855f7;
+    margin-bottom: 10px;
+}
+
+.metric-item-status .number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #facc15;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* ============================================================
+   6. SEÇÃO DE PROJETOS (CARDS)
+   ============================================================ */
+
 .grid-projetos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -162,49 +228,99 @@ section {
     padding: 30px;
     border-radius: 15px;
     border: 1px solid #1a1a1a;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, border-color 0.4s ease;
 }
 
 .card:hover {
     transform: translateY(-10px);
-    border-color: #a855f7;
-    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+    border-color: #facc15;
+    box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2);
 }
 
-/* GRID DE SKILLS */
+.tag {
+    background-color: #a855f7;
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+/* ============================================================
+   7. SEÇÃO DE HABILIDADES (GRID & HOVER)
+   ============================================================ */
+
 .grid-skills {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
 .skill-item {
-    background: #0a0a0a;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #1a1a1a;
+    background-color: #0a0a0a;
+    padding: 30px 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(168, 85, 247, 0.15);
     text-align: center;
-    transition: 0.3s ease;
+    transition: transform 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
 }
 
+/* Estilo do Ícone - Padrão Roxo */
 .skill-item i {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: #a855f7;
-    margin-bottom: 12px;
-    display: block;
+    margin-bottom: 15px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
+/* Nome da Habilidade - Amarelo */
 .skill-item span {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #fff;
+    display: block;
+    font-weight: 800;
+    color: #facc15;
+    font-size: 1.2rem;
     text-transform: uppercase;
 }
 
-/* CONTATO E REDES SOCIAIS */
+/* Descrição da Ferramenta */
+.skill-item p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* Efeitos de Hover nas Skills */
+.skill-item:hover {
+    transform: translateY(-10px);
+    border-color: #facc15;
+    background-color: #0f0f0f;
+}
+
+.skill-item:hover i {
+    color: #facc15;
+    text-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+}
+
+/* ============================================================
+   8. SEÇÃO DE CONTATO E REDES SOCIAIS
+   ============================================================ */
+
 #contato {
-    text-align: center;
     background-color: #050505;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subtitulo-contato {
+    color: #94a3b8;
+    margin-bottom: 30px;
 }
 
 .redes-sociais {
@@ -212,107 +328,95 @@ section {
     justify-content: center;
     align-items: center;
     gap: 40px;
-    margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 .icone-link {
     font-size: 3rem;
     color: #a855f7;
-    transition: 0.4s;
+    transition: color 0.4s ease, transform 0.4s ease;
 }
 
 .icone-link:hover {
     color: #facc15;
-    transform: translateY(-10px) scale(1.1);
+    transform: translateY(-10px);
 }
 
-/* RODAPÉ / COPYRIGHT */
+/* ============================================================
+   9. SUMÁRIO FLUTUANTE (LATERAL)
+   ============================================================ */
+
+.sumario-flutuante {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9995;
+}
+
+.sumario-flutuante ul {
+    list-style: none;
+    padding: 20px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 35px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sumario-flutuante ul:hover {
+    width: 170px;
+}
+
+.sumario-item {
+    text-decoration: none;
+    color: transparent;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.sumario-flutuante ul:hover .sumario-item {
+    color: #ffffff;
+}
+
+/* Bolinha indicadora no sumário */
+.sumario-item::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.sumario-item.active {
+    color: #facc15 !important;
+}
+
+.sumario-item.active::before {
+    background-color: #facc15;
+    box-shadow: 0 0 10px #facc15;
+}
+
+/* ============================================================
+   10. RODAPÉ (FOOTER)
+   ============================================================ */
+
 footer {
     text-align: center;
-    padding: 20px;
-    background-color: #000;
+    padding: 40px;
+    background-color: #000000;
     border-top: 1px solid #1a1a1a;
     color: #94a3b8;
-    font-size: 0.8rem;
 }
 
 footer span {
-    color: #facc15;
-}
-
-/* BOTÃO VOLTAR AO TOPO */
-#btnTopo {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    background-color: #a855f7;
-    color: #000;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
-    transition: 0.3s;
-}
-
-/* ===========================================
-   AJUSTES PARA CELULAR (RESPONSIVIDADE)
-   =========================================== */
-
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        padding: 20px 5%;
-        text-align: center;
-    }
-    
-    nav ul {
-        margin-top: 15px;
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-
-    section {
-        padding: 60px 5%;
-    }
-
-    .conteudo-sobre {
-        padding: 25px;
-        font-size: 1rem;
-        border-right: none;
-        border-bottom: 4px solid #facc15;
-    }
-
-    .grid-skills {
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        gap: 10px;
-    }
-
-    .redes-sociais {
-        gap: 25px;
-    }
-
-    .icone-link {
-        font-size: 2.2rem; /* Ícones menores no mobile para não achatar */
-    }
-}
-
-/* ANIMAÇÕES */
-#texto-maquina::after {
-    content: '|';
     color: #a855f7;
-    animation: piscar 0.7s infinite;
-}
-
-@keyframes piscar {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    font-weight: bold;
 }
