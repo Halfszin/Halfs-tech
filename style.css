@@ -420,3 +420,23 @@ footer span {
     color: #a855f7;
     font-weight: bold;
 }
+/* ============================================================
+   REGRAS PARA DISPOSITIVOS MÓVEIS (Telas menores que 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    
+    /* Esconde o sumário flutuante lateral no mobile */
+    .sumario-flutuante {
+        display: none;
+    }
+
+    /* Opcional: Ajusta o tamanho do título no mobile para não quebrar */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Garante que as seções tenham um respiro lateral menor */
+    section {
+        padding: 60px 5%;
+    }
+}
