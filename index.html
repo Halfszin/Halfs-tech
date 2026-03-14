@@ -27,8 +27,7 @@
 
     <header id="home">
         <div class="hero-content">
-            <h1 id="texto-maquina">Rafael Souza</h1>
-            <p>Especialista em Automação & Desenvolvedor em Formação</p>
+            <h1 id="texto-maquina"></h1> <p>Especialista em Automação & Desenvolvedor em Formação</p>
             <a href="#projetos" class="btn-principal">Ver Projetos</a>
         </div>
     </header>
@@ -66,7 +65,7 @@
     <section id="projetos">
         <h2 class="titulo-sessao">Meus Projetos</h2>
         <div class="grid-projetos">
-            <div class="card">
+            <div class="card" data-aos="fade-up">
                 <span class="tag">Lógica</span>
                 <h3>Sistema de RPG</h3>
                 <p>Desenvolvimento de mecânicas de dados e fichas interativas.</p>
@@ -163,7 +162,13 @@
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script>
+        // Inicializa a biblioteca de animações
+        AOS.init({ 
+            duration: 1000, 
+            once: true 
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
